@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN"> <!-- log4j2自体のログレベルを設定(WARNかCRITICALでよい) -->
+    <!-- ログの出力先/フォーマットの定義 -->
+    <Appenders>
+        <!-- DEBUG レベル用のフォーマット -->
+        <Console name="DebugConsole" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} [%t] %-5level %logger{36} - %msg%n" charset="UTF-8" />
+        </Console>
+
+        <!-- INFO レベル用のフォーマット -->
+        <Console name="InfoConsole" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{HH:mm:ss} [%level] %logger{1} - %msg%n" charset="UTF-8" />
+        </Console>
+    </Appenders>
+    
+    <Loggers>
+        <!-- 全てのログに設定されるデフォルト設定(INFO) -->
+        <Root level="info">
+            <AppenderRef ref="InfoConsole"/> <!-- INFO レベル用のフォーマットを参照 -->
+        </Root>
+
+        <!-- com.example パッケージに対して DEBUG レベルで出力 -->
+        <Logger name="com.example" level="debug" additivity="false"> <!-- DEBUG レベル用のフォーマットを参照 -->
+            <AppenderRef ref="DebugConsole"/> 
+        </Logger>
+    </Loggers>
+</Configuration>

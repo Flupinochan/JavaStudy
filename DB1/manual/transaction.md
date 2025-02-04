@@ -1,0 +1,3 @@
+複数のSQLを実行し、全てのSQLが成功した場合にcommitしたい場合
+autocommitをオフにして、手動でcommitする
+try-catchでエラーになった場合は、catchでrollbackする
