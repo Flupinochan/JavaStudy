@@ -8,10 +8,30 @@
 
 <h3>Student Form</h3>
 
+<!-- @はURLを示し、POSTリクエストする $はaddAttributeされたmodelを取得する *はth:objectでバインドされたクラスのフィールドを参照、バインドする-->
 <form th:action="@{/processStudentForm}" th:object="${student}" method="post">
   First Name: <input type="text" th:field="*{firstName}" />
   <br/><br/>
   Last Name: <input type="text" th:field="${student.lastName}" />
+  <br/><br/>
+
+    <select th:field="*{country}">
+        <option th:each="country : ${countries}" th:value="${country}" th:text="${country}" />
+    </select>
+
+    <br><br>
+
+    Favorite Programming Language:
+
+    <input type="radio" th:each="lang: ${language}" th:field="*{favoriteLanguage}" th:value="${lang}" th:text="${lang}"/>
+
+    <br><br>
+
+    Favorite OS
+
+    <input type="checkbox" th:each="tfavoriteOs: ${os}" th:field="*{favoriteOs}" th:value="${tfavoriteOs}" th:text="${tfavoriteOs}" />
+
+    <br><br>
 
   <input type="submit" value="Submit" />
 </form>
